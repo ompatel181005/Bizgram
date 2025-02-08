@@ -31,15 +31,9 @@ const SidebarButton: React.FC<{
 );
 
 const Sidebar: React.FC = () => {
-<<<<<<< HEAD
   const [showSearch, setShowSearch] = useState(false); // State for search overlay
   const [searchQuery, setSearchQuery] = useState(""); // State for search input
   const navigate = useNavigate(); // Hook to handle navigation
-=======
-  const [showSearch, setShowSearch] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const navigate = useNavigate();
->>>>>>> a6fc6ad56deb8b57dcf70d0899c6c85ff6782fc3
 
   return (
     <>
