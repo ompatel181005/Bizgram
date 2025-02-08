@@ -15,7 +15,7 @@ interface UserProfile {
 const users: Record<string, UserProfile> = {
   "Honey Patel": {
     profilePic: "/pfps/pfp_10.jpg",
-    business: "Tech Consultant & Developer",
+    business: "Tech Consultant & Developer and a part time Billionaire",
     followers: 1200,
     following: 450,
     posts: 8,
