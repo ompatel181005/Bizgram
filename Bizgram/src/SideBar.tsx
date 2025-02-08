@@ -1,43 +1,97 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
-import { FaUser, FaSearch, FaUsers, FaEdit, FaEnvelope } from "react-icons/fa";
-import SearchOverlay from "./SearchOverlay"; // Import Search Overlay
+import { Button, Form } from "react-bootstrap";
+import {
+  FaUser,
+  FaUsers,
+  FaEdit,
+  FaEnvelope,
+  FaCog,
+  FaBell,
+  FaSearch,
+  FaTimes,
+} from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
+// Reusable Button Component for the Sidebar
+const SidebarButton: React.FC<{
+  icon: React.ReactNode;
+  label: string;
+  onClick?: () => void;
+}> = ({ icon, label, onClick }) => (
+  <Button
+    variant="dark"
+    className="w-100 mb-4 text-white d-flex align-items-center py-3"
+    aria-label={label}
+    style={{ fontSize: "1.2rem" }}
+    onClick={onClick} // Handle button click
+  >
+    {icon}
+    {label}
+  </Button>
+);
 
 const Sidebar: React.FC = () => {
-  const [showSearch, setShowSearch] = useState(false);
+  const [showSearch, setShowSearch] = useState(false); // State for search overlay
+  const [searchQuery, setSearchQuery] = useState(""); // State for search input
+  const navigate = useNavigate(); // Hook to handle navigation
 
   return (
     <>
-      
-      <div className="d-flex flex-column bg-dark text-white p-3 vh-100 position-fixed" style={{ width: "250px" }}>
-        {/* Profile Button */}
-        <Button variant="dark" className="w-100 mb-3 d-flex align-items-center">
-          <FaUser className="me-2" /> Profile
-        </Button>
+      {/* Sidebar */}
+      <div className="sidebar d-flex flex-column bg-dark text-white p-3 vh-100 position-fixed">
+        <h1>BizzGram</h1>
+        <div className="flex-grow-1"></div>
 
-        {/* Search Button (Opens Overlay) */}
-        <Button variant="dark" className="w-100 mb-3 d-flex align-items-center" onClick={() => setShowSearch(true)}>
-          <FaSearch className="me-2" /> Search
-        </Button>
+        {/* Profile Button (Navigates to Honey Patel's Profile) */}
+        <SidebarButton
+          icon={<FaUser className="me-2" />}
+          label="Profile"
+          onClick={() => navigate("/profile/Honey Patel")}
+        />
 
-        {/* Groups Button */}
-        <Button variant="dark" className="w-100 mb-3 d-flex align-items-center">
-          <FaUsers className="me-2" /> Groups
-        </Button>
+        {/* Search Button (Opens Fullscreen Search) */}
+        <SidebarButton
+          icon={<FaSearch className="me-2" />}
+          label="Search"
+          onClick={() => setShowSearch(true)}
+        />
 
-        {/* Post Button */}
-        <Button variant="dark" className="w-100 mb-3 d-flex align-items-center">
-          <FaEdit className="me-2" /> Post
-        </Button>
-
-        {/* Messages Button */}
-        <Button variant="dark" className="w-100 d-flex align-items-center">
-          <FaEnvelope className="me-2" /> Messages
-        </Button>
+        {/* Other Buttons */}
+        <SidebarButton icon={<FaUsers className="me-2" />} label="Groups" />
+        <SidebarButton icon={<FaEdit className="me-2" />} label="Post" />
+        <SidebarButton
+          icon={<FaEnvelope className="me-2" />}
+          label="Messages"
+        />
+        <SidebarButton
+          icon={<FaBell className="me-2" />}
+          label="Notifications"
+        />
+        <SidebarButton icon={<FaCog className="me-2" />} label="Settings" />
       </div>
 
-      {/* Show Search Overlay When Clicked */}
-      {showSearch && <SearchOverlay closeOverlay={() => setShowSearch(false)} />}
+      {/* Fullscreen Search Overlay */}
+      {showSearch && (
+        <div className="search-overlay">
+          <div className="search-container">
+            <h1 className="search-title">What are you looking for?</h1>
+            <div className="search-box">
+              <FaSearch className="search-icon" />
+              <Form.Control
+                type="text"
+                placeholder="Search here..."
+                className="search-input"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <FaTimes
+                className="close-icon"
+                onClick={() => setShowSearch(false)}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
