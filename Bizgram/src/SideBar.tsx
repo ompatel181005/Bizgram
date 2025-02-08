@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
 import {
   FaUser,
@@ -14,15 +14,29 @@ import { useNavigate } from "react-router-dom";
 import SearchOverlay from "./SearchOverlay";
 
 // Random names & actions for notifications
-const names = ["John Doe", "Alice Smith", "Emma Brown", "Michael Lee", "David Wilson", "Sophia Davis"];
-const actions = ["liked your post", "commented on your post", "started a new business", "followed you", "mentioned you in a post"];
+const names = [
+  "John Doe",
+  "Alice Smith",
+  "Emma Brown",
+  "Michael Lee",
+  "David Wilson",
+  "Sophia Davis",
+];
+const actions = [
+  "liked your post",
+  "commented on your post",
+  "started a new business",
+  "followed you",
+  "mentioned you in a post",
+];
 
 const generateNotification = () => {
   const randomName = names[Math.floor(Math.random() * names.length)];
   const randomAction = actions[Math.floor(Math.random() * actions.length)];
   return `${randomName} ${randomAction}`;
 };
-// Reusable Button Component for the Sidebar
+
+// Reusable Button Component for Sidebar
 const SidebarButton: React.FC<{
   icon: React.ReactNode;
   label: string;
@@ -37,13 +51,13 @@ const SidebarButton: React.FC<{
       fontSize: "1.2rem",
       transition: "background-color 0.3s, transform 0.2s",
       fontFamily: "'Poppins', sans-serif",
-      background: "#1e1e1e", // Dark background
+      background: "#1e1e1e",
       border: "none",
-      color: "#fff", // White text
+      color: "#fff",
     }}
     onClick={onClick}
     onMouseEnter={(e) => {
-      e.currentTarget.style.backgroundColor = "#646cff"; // Accent color on hover
+      e.currentTarget.style.backgroundColor = "#646cff";
       e.currentTarget.style.transform = "scale(1.02)";
     }}
     onMouseLeave={(e) => {
@@ -54,14 +68,13 @@ const SidebarButton: React.FC<{
     {icon}
     <span style={{ marginLeft: "10px" }}>{label}</span>
     {showBadge && <span className="notification-badge"></span>}
-
   </Button>
 );
 
 const Sidebar: React.FC = () => {
-  const [showSearch, setShowSearch] = useState(false); // State for Search Overlay
-  const [showPostOptions, setShowPostOptions] = useState(false); // State for Post Options
-  const [showPostModal, setShowPostModal] = useState(false); // State for Post Modal
+  const [showSearch, setShowSearch] = useState(false);
+  const [showPostOptions, setShowPostOptions] = useState(false);
+  const [showPostModal, setShowPostModal] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const [notifications, setNotifications] = useState<string[]>([]);
   const navigate = useNavigate();
@@ -69,7 +82,7 @@ const Sidebar: React.FC = () => {
   // Generate new notifications every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setNotifications((prev) => [generateNotification(), ...prev].slice(0, 5)); // Show only last 5 notifications
+      setNotifications((prev) => [generateNotification(), ...prev].slice(0, 5));
     }, 5000);
 
     return () => clearInterval(interval);
@@ -81,7 +94,7 @@ const Sidebar: React.FC = () => {
       <div
         className="sidebar d-flex flex-column bg-dark text-white p-3 vh-100 position-fixed"
         style={{
-          background: "#121212", // Dark background
+          background: "#121212",
           fontFamily: "'Poppins', sans-serif",
           width: "280px",
         }}
@@ -92,7 +105,7 @@ const Sidebar: React.FC = () => {
           onClick={() => navigate("/")}
           style={{
             cursor: "pointer",
-            color: "#646cff", // Accent color
+            color: "#646cff",
             fontSize: "2rem",
             fontWeight: "700",
           }}
@@ -113,11 +126,15 @@ const Sidebar: React.FC = () => {
         <SidebarButton
           icon={<FaSearch className="me-2" />}
           label="Search"
-          onClick={() => setShowSearch(true)} // Open Search Overlay
+          onClick={() => setShowSearch(true)}
         />
 
-        {/* Groups Button */}
-        <SidebarButton icon={<FaUsers className="me-2" />} label="Groups" />
+        {/* Groups Button (Navigates to /groups) */}
+        <SidebarButton
+          icon={<FaUsers className="me-2" />}
+          label="Groups"
+          onClick={() => navigate("/groups")}
+        />
 
         {/* Post Button */}
         <SidebarButton
@@ -125,12 +142,13 @@ const Sidebar: React.FC = () => {
           label="Post"
           onClick={() => setShowPostOptions((prev) => !prev)}
         />
+
         {showPostOptions && (
           <div className="post-options bg-light text-dark p-3 rounded">
             <Button
               variant="outline-dark"
               className="w-100 mb-2"
-              onClick={() => setShowPostModal(true)} // Open Post Modal
+              onClick={() => setShowPostModal(true)}
             >
               Post
             </Button>
@@ -164,46 +182,6 @@ const Sidebar: React.FC = () => {
 
       {/* Fullscreen Search Overlay */}
       {showSearch && <SearchOverlay onClose={() => setShowSearch(false)} />}
-
-      {/* Post Modal */}
-      <Modal show={showPostModal} onHide={() => setShowPostModal(false)} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>Create new post</Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="text-center">
-          <div className="upload-container">
-            <div className="icon-placeholder mb-3">
-              {/* Icon representing photo/video */}
-              <FaEdit size={50} />
-            </div>
-            <h4>Drag photos and videos here</h4>
-            <Button variant="primary" className="mt-3">
-              Select from computer
-            </Button>
-          </div>
-        </Modal.Body>
-      </Modal>
-
-      {/* Notifications Panel */}
-      {showNotifications && (
-        <div className="notifications-overlay">
-          <div className="notifications-container">
-            <h2>Notifications</h2>
-            {notifications.length > 0 ? (
-              notifications.map((notification, index) => (
-                <div key={index} className="notification-item">
-                  <p>{notification}</p>
-                </div>
-              ))
-            ) : (
-              <p className="no-notifications">No new notifications</p>
-            )}
-          </div>
-          <button className="close-button" onClick={() => setShowNotifications(false)}>
-            <FaTimes />
-          </button>
-        </div>
-      )}
     </React.Fragment>
   );
 };

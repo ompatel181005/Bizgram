@@ -2,8 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./SideBar";
 import Feed from "./Feed";
-import Profile from "./Profile"; // Import Profile Page
-import UserList from "./UserList"; // Import UserList component
+import Profile from "./Profile";
+import UserList from "./UserList";
+import Groups from "./Groups"; // Import Groups Page
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
         {/* Left Sidebar */}
         <Sidebar />
 
-        {/* Main Content (Feed, Profile, etc.) */}
+        {/* Main Content (Feed, Profile, Groups) */}
         <div
           className="flex-grow-1 p-0"
           style={{
@@ -24,16 +25,17 @@ function App() {
           }}
         >
           <Routes>
-            <Route path="/" element={<Feed />} /> {/* Home Feed */}
-            <Route path="/profile/:username" element={<Profile />} />{" "}
-            {/* Dynamic Profile Page */}
+            <Route path="/" element={<Feed />} />
+            <Route path="/profile/:username" element={<Profile />} />
+            <Route path="/groups" element={<Groups />} /> {/* Groups Page */}
           </Routes>
         </div>
+
         {/* Right Sidebar (User List) */}
         <UserList />
       </div>
     </Router>
   );
-};
+}
 
 export default App;
