@@ -16,6 +16,7 @@ const suggestedConnections = [
   { id: 7, name: "David Wilson", company: "AI Labs" },
 ];
 
+// Styled component for the scrollable container
 const ScrollableContainer = styled.div`
   overflow-y: auto;
   -ms-overflow-style: none; /* For IE 10+ */
@@ -62,7 +63,7 @@ const UserList: React.FC = () => {
 
         {/* Suggested Connections */}
         <div style={{ flex: 1 }}>
-          <h6 className="mb-3">Suggested New Connections</h6>
+          <h6 className="mb-3" style={{ color: "white" }}>Suggested New Connections</h6>
           <ScrollableContainer style={{ height: "50vh" }}>
             {suggestedConnections.map((user, index) => (
               <Card
@@ -74,12 +75,13 @@ const UserList: React.FC = () => {
                   marginBottom: index === suggestedConnections.length - 1 ? "50%" : "1rem",
                 }}
               >
-                <Card.Body className="d-flex justify-content-between align-items-center">
+                
+                <Card.Body className="d-flex justify-content-between align-items-center" style={{ color: "white" }}>
                   <div>
-                    <Card.Title>{user.name}</Card.Title>
-                    <Card.Text className="text-muted">{user.company}</Card.Text>
+                    <Card.Title style={{ color: "white" }}>{user.name}</Card.Title>
+                    <Card.Text style={{ color: "white" }}>{user.company}</Card.Text>
                   </div>
-                  <Button variant="primary" size="sm">
+                  <Button variant="primary" size="sm" >
                     Follow
                   </Button>
                 </Card.Body>
