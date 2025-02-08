@@ -160,8 +160,12 @@ const Sidebar: React.FC = () => {
           showBadge={notifications.length > 0}
         />
 
-        {/* Settings Button */}
-        <SidebarButton icon={<FaCog className="me-2" />} label="Settings" />
+        {/* Fixed Settings Button */}
+        <SidebarButton
+          icon={<FaCog className="me-2" />}
+          label="Settings"
+          onClick={() => setShowSettings(true)}
+        />
       </div>
 
       {/* Fullscreen Search Overlay */}
@@ -225,6 +229,9 @@ const Sidebar: React.FC = () => {
           </button>
         </div>
       )}
+
+      {/* Fixed Settings Panel */}
+      {showSettings && <Settings onClose={() => setShowSettings(false)} />}        
     </React.Fragment>
   );
 };
