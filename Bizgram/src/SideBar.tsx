@@ -23,7 +23,7 @@ const SidebarButton: React.FC<{
     className="w-100 mb-4 text-white d-flex align-items-center py-3"
     aria-label={label}
     style={{ fontSize: "1.2rem" }}
-    onClick={onClick} // Handle button click
+    onClick={onClick}
   >
     {icon}
     {label}
@@ -31,15 +31,29 @@ const SidebarButton: React.FC<{
 );
 
 const Sidebar: React.FC = () => {
+<<<<<<< HEAD
   const [showSearch, setShowSearch] = useState(false); // State for search overlay
   const [searchQuery, setSearchQuery] = useState(""); // State for search input
   const navigate = useNavigate(); // Hook to handle navigation
+=======
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+>>>>>>> a6fc6ad56deb8b57dcf70d0899c6c85ff6782fc3
 
   return (
     <>
       {/* Sidebar */}
       <div className="sidebar d-flex flex-column bg-dark text-white p-3 vh-100 position-fixed">
-        <h1>BizzGram</h1>
+        {/* Clickable Logo */}
+        <h1
+          className="cursor-pointer text-center mb-4"
+          onClick={() => navigate("/")}
+          style={{ cursor: "pointer" }}
+        >
+          BizzGram
+        </h1>
+
         <div className="flex-grow-1"></div>
 
         {/* Profile Button (Navigates to Honey Patel's Profile) */}

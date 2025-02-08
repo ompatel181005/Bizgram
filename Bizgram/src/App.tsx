@@ -1,10 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./SideBar";
+<<<<<<< HEAD
 import UserList from "./UserList";
+=======
+>>>>>>> a6fc6ad56deb8b57dcf70d0899c6c85ff6782fc3
 import Feed from "./Feed";
 import Profile from "./Profile"; // Import Profile Page
+import UserList from "./UserList"; // Import UserList component
 import "bootstrap/dist/css/bootstrap.min.css";
+<<<<<<< HEAD
+=======
+import styled from "styled-components";
+>>>>>>> a6fc6ad56deb8b57dcf70d0899c6c85ff6782fc3
 
 function App() {
   return (
