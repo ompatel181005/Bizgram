@@ -17,16 +17,20 @@ import image10 from "/Feed_Pics/image10.png";
 interface Post {
   id: number;
   username: string;
+  businessDescription: string; // New business description field
+  profilePic: string;
   image: string;
   caption: string;
   timestamp: string;
 }
 
-// Array of posts using imported images
+// Updated posts array with small business descriptions
 const posts: Post[] = [
   {
     id: 1,
     username: "John Doe",
+    businessDescription: "Handmade leather goods",
+    profilePic: image1,
     image: image1,
     caption: "Enjoying the sunset!",
     timestamp: "2 hours ago",
@@ -34,6 +38,8 @@ const posts: Post[] = [
   {
     id: 2,
     username: "Alice Smith",
+    businessDescription: "Custom jewelry designer",
+    profilePic: image2,
     image: image2,
     caption: "New adventures!",
     timestamp: "5 hours ago",
@@ -41,6 +47,8 @@ const posts: Post[] = [
   {
     id: 3,
     username: "Emma Brown",
+    businessDescription: "Organic skincare products",
+    profilePic: image3,
     image: image3,
     caption: "Chilling with friends!",
     timestamp: "1 day ago",
@@ -48,6 +56,8 @@ const posts: Post[] = [
   {
     id: 4,
     username: "Michael Lee",
+    businessDescription: "Tech gadgets & accessories",
+    profilePic: image4,
     image: image4,
     caption: "Workout time!",
     timestamp: "3 days ago",
@@ -55,6 +65,8 @@ const posts: Post[] = [
   {
     id: 5,
     username: "David Wilson",
+    businessDescription: "Personalized artwork",
+    profilePic: image5,
     image: image5,
     caption: "Loving nature!",
     timestamp: "4 days ago",
@@ -62,6 +74,8 @@ const posts: Post[] = [
   {
     id: 6,
     username: "Sophia Davis",
+    businessDescription: "Handmade candles & decor",
+    profilePic: image6,
     image: image6,
     caption: "Beach vibes!",
     timestamp: "5 days ago",
@@ -69,6 +83,8 @@ const posts: Post[] = [
   {
     id: 7,
     username: "Olivia Martinez",
+    businessDescription: "Eco-friendly fashion",
+    profilePic: image7,
     image: image7,
     caption: "Throwback to last weekend!",
     timestamp: "6 days ago",
@@ -76,6 +92,8 @@ const posts: Post[] = [
   {
     id: 8,
     username: "Bob Johnson",
+    businessDescription: "Custom furniture craftsman",
+    profilePic: image8,
     image: image8,
     caption: "Hiking trip!",
     timestamp: "1 week ago",
@@ -83,6 +101,8 @@ const posts: Post[] = [
   {
     id: 9,
     username: "Chris Evans",
+    businessDescription: "Local coffee roaster",
+    profilePic: image9,
     image: image9,
     caption: "Morning coffee!",
     timestamp: "2 weeks ago",
@@ -90,7 +110,8 @@ const posts: Post[] = [
   {
     id: 10,
     username: "Lily Parker",
-
+    businessDescription: "Boutique clothing brand",
+    profilePic: image10,
     image: image10,
     caption: "City lights!",
     timestamp: "3 weeks ago",
@@ -139,12 +160,19 @@ const Feed: React.FC = () => {
           {/* User Info */}
           <Card.Header className="d-flex align-items-center bg-secondary">
             <img
+              src={post.profilePic}
               alt={post.username}
               className="rounded-circle me-2"
               width="50"
               height="50"
             />
-            <strong>{post.username}</strong>
+            <div>
+              <strong>{post.username}</strong>
+              <p className="text-white-50 mb-0 small">
+                {post.businessDescription}
+              </p>{" "}
+              {/* Small business description */}
+            </div>
           </Card.Header>
 
           {/* Post Image */}
