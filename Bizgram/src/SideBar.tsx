@@ -145,29 +145,11 @@ const Sidebar: React.FC = () => {
           onClick={() => setShowPostOptions((prev) => !prev)}
         />
 
-        {showPostOptions && (
-          <div className="post-options bg-light text-dark p-3 rounded">
-            <Button
-              variant="outline-dark"
-              className="w-100 mb-2"
-              onClick={() => setShowPostModal(true)}
-            >
-              Post
-            </Button>
-            <Button
-              variant="outline-dark"
-              className="w-100"
-              onClick={() => console.log("AI Character clicked")}
-            >
-              AI Character
-            </Button>
-          </div>
-        )}
-
-        {/* Messages Button */}
+        {/* Messages Button (Navigates to /messages) */}
         <SidebarButton
           icon={<FaEnvelope className="me-2" />}
           label="Messages"
+          onClick={() => navigate("/messages")}
         />
 
         {/* Notifications Button */}
@@ -184,49 +166,6 @@ const Sidebar: React.FC = () => {
 
       {/* Fullscreen Search Overlay */}
       {showSearch && <SearchOverlay onClose={() => setShowSearch(false)} />}
-
-      {/* Post Modal */}
-      <Modal show={showPostModal} onHide={() => setShowPostModal(false)} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>Create new post</Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="text-center">
-          <div className="upload-container">
-            <div className="icon-placeholder mb-3">
-              {/* Icon representing photo/video */}
-              <FaEdit size={50} />
-            </div>
-            <h4>Drag photos and videos here</h4>
-            <Button variant="primary" className="mt-3">
-              Select from computer
-            </Button>
-          </div>
-        </Modal.Body>
-      </Modal>
-
-      {/* Notifications Panel */}
-      {showNotifications && (
-        <div className="notifications-overlay">
-          <div className="notifications-container">
-            <h2>Notifications</h2>
-            {notifications.length > 0 ? (
-              notifications.map((notification, index) => (
-                <div key={index} className="notification-item">
-                  <p>{notification}</p>
-                </div>
-              ))
-            ) : (
-              <p className="no-notifications">No new notifications</p>
-            )}
-          </div>
-          <button className="close-button" onClick={() => setShowNotifications(false)}>
-            <FaTimes />
-          </button>
-        </div>
-      )}
-
-      {/* Updated Settings Panel */}
-      {showSettings && <Settings onClose={() => setShowSettings(false)} />}
     </React.Fragment>
   );
 };

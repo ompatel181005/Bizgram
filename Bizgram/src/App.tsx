@@ -4,7 +4,8 @@ import Sidebar from "./SideBar";
 import Feed from "./Feed";
 import Profile from "./Profile";
 import UserList from "./UserList";
-import Groups from "./Groups"; // Import Groups Page
+import Groups from "./Groups";
+import Messages from "./Messages"; // Import Messages Page
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
         {/* Left Sidebar */}
         <Sidebar />
 
-        {/* Main Content (Feed, Profile, Groups) */}
+        {/* Main Content (Feed, Profile, Groups, Messages) */}
         <div
           className="flex-grow-1 p-0"
           style={{
@@ -27,7 +28,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Feed />} />
             <Route path="/profile/:username" element={<Profile />} />
-            <Route path="/groups" element={<Groups />} /> {/* Groups Page */}
+            <Route path="/groups" element={<Groups />} />
+            <Route path="/messages" element={<Messages />} />{" "}
+            {/* Messages Page */}
           </Routes>
         </div>
 
