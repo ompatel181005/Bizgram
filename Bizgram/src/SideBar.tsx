@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import { Button, Modal } from "react-bootstrap";
 import {
   FaUser,
@@ -13,12 +13,22 @@ import {
 import { useNavigate } from "react-router-dom";
 import SearchOverlay from "./SearchOverlay";
 
+// Random names & actions for notifications
+const names = ["John Doe", "Alice Smith", "Emma Brown", "Michael Lee", "David Wilson", "Sophia Davis"];
+const actions = ["liked your post", "commented on your post", "started a new business", "followed you", "mentioned you in a post"];
+
+const generateNotification = () => {
+  const randomName = names[Math.floor(Math.random() * names.length)];
+  const randomAction = actions[Math.floor(Math.random() * actions.length)];
+  return `${randomName} ${randomAction}`;
+};
 // Reusable Button Component for the Sidebar
 const SidebarButton: React.FC<{
   icon: React.ReactNode;
   label: string;
   onClick?: () => void;
-}> = ({ icon, label, onClick }) => (
+  showBadge?: boolean;
+}> = ({ icon, label, onClick, showBadge }) => (
   <Button
     variant="dark"
     className="w-100 mb-4 text-white d-flex align-items-center py-3"
@@ -43,6 +53,8 @@ const SidebarButton: React.FC<{
   >
     {icon}
     <span style={{ marginLeft: "10px" }}>{label}</span>
+    {showBadge && <span className="notification-badge"></span>}
+
   </Button>
 );
 
@@ -50,7 +62,18 @@ const Sidebar: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false); // State for Search Overlay
   const [showPostOptions, setShowPostOptions] = useState(false); // State for Post Options
   const [showPostModal, setShowPostModal] = useState(false); // State for Post Modal
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [notifications, setNotifications] = useState<string[]>([]);
   const navigate = useNavigate();
+
+  // Generate new notifications every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setNotifications((prev) => [generateNotification(), ...prev].slice(0, 5)); // Show only last 5 notifications
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <React.Fragment>
@@ -131,6 +154,8 @@ const Sidebar: React.FC = () => {
         <SidebarButton
           icon={<FaBell className="me-2" />}
           label="Notifications"
+          onClick={() => setShowNotifications(!showNotifications)}
+          showBadge={notifications.length > 0}
         />
 
         {/* Settings Button */}
@@ -158,6 +183,27 @@ const Sidebar: React.FC = () => {
           </div>
         </Modal.Body>
       </Modal>
+
+      {/* Notifications Panel */}
+      {showNotifications && (
+        <div className="notifications-overlay">
+          <div className="notifications-container">
+            <h2>Notifications</h2>
+            {notifications.length > 0 ? (
+              notifications.map((notification, index) => (
+                <div key={index} className="notification-item">
+                  <p>{notification}</p>
+                </div>
+              ))
+            ) : (
+              <p className="no-notifications">No new notifications</p>
+            )}
+          </div>
+          <button className="close-button" onClick={() => setShowNotifications(false)}>
+            <FaTimes />
+          </button>
+        </div>
+      )}
     </React.Fragment>
   );
 };
