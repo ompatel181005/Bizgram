@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FaSearch } from "react-icons/fa";
 
 const SearchOverlay: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [text, setText] = useState("");
