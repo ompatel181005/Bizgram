@@ -178,6 +178,45 @@ button:focus-visible {
   color: red;
 }
 
+/* Search Results */
+.search-results {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Profile Card */
+.profile-card {
+  display: flex;
+  align-items: center;
+  background: var(--card-bg);
+  padding: 15px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.profile-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.1);
+}
+
+/* Profile Avatar */
+.profile-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+/* Profile Business */
+.profile-business {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
 /* =================== */
 /* 🔤 Typing Animation */
 /* =================== */

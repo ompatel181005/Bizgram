@@ -35,10 +35,11 @@ const UserList: React.FC = () => {
 
   // Function to toggle follow state
   const handleFollowToggle = (userId: number) => {
-    setFollowedUsers((prev) =>
-      prev.includes(userId)
-        ? prev.filter((id) => id !== userId) // Unfollow if already followed
-        : [...prev, userId] // Follow if not already followed
+    setFollowedUsers(
+      (prev) =>
+        prev.includes(userId)
+          ? prev.filter((id) => id !== userId) // Unfollow if already followed
+          : [...prev, userId] // Follow if not already followed
     );
   };
 
@@ -48,7 +49,10 @@ const UserList: React.FC = () => {
       style={{ width: "250px", right: 0 }}
     >
       {/* Container for both sections */}
-      <div className="d-flex flex-column justify-content-between" style={{ height: "100%" }}>
+      <div
+        className="d-flex flex-column justify-content-between"
+        style={{ height: "100%" }}
+      >
         {/* Current Connections */}
         <div style={{ flex: 1 }}>
           <h6 className="mb-2">Current Connections</h6>
@@ -70,13 +74,13 @@ const UserList: React.FC = () => {
             ))}
           </ScrollableContainer>
         </div>
-
         {/* Reduced spacing between sections */}
         <hr className="my-2" /> {/* Reduced margin for <hr> */}
-
         {/* Suggested Connections */}
         <div style={{ flex: 1 }}>
-          <h6 className="mb-2" style={{ color: "white" }}>Suggested New Connections</h6>
+          <h6 className="mb-2" style={{ color: "white" }}>
+            Suggested New Connections
+          </h6>
           <ScrollableContainer style={{ height: "50vh" }}>
             {suggestedConnections.map((user, index) => (
               <Card
@@ -88,13 +92,25 @@ const UserList: React.FC = () => {
                   marginBottom: "0.5rem", // Reduced space between cards
                 }}
               >
-                <Card.Body className="d-flex justify-content-between align-items-center" style={{ color: "white" }}>
+                <Card.Body
+                  className="d-flex justify-content-between align-items-center"
+                  style={{ color: "white" }}
+                >
                   <div>
-                    <Card.Title style={{ color: "white" }}>{user.name}</Card.Title>
-                    <Card.Text style={{ color: "white" }} className="text-muted">{user.company}</Card.Text>
+                    <Card.Title style={{ color: "white" }}>
+                      {user.name}
+                    </Card.Title>
+                    <Card.Text
+                      style={{ color: "white" }}
+                      className="text-muted"
+                    >
+                      {user.company}
+                    </Card.Text>
                   </div>
                   <Button
-                    variant={followedUsers.includes(user.id) ? "success" : "primary"}
+                    variant={
+                      followedUsers.includes(user.id) ? "success" : "primary"
+                    }
                     size="sm"
                     onClick={() => handleFollowToggle(user.id)}
                   >
