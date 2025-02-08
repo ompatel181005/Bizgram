@@ -63,6 +63,7 @@ const Sidebar: React.FC = () => {
   const [showPostOptions, setShowPostOptions] = useState(false); // State for Post Options
   const [showPostModal, setShowPostModal] = useState(false); // State for Post Modal
   const [showNotifications, setShowNotifications] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
   const [notifications, setNotifications] = useState<string[]>([]);
   const navigate = useNavigate();
 
@@ -202,6 +203,26 @@ const Sidebar: React.FC = () => {
           <button className="close-button" onClick={() => setShowNotifications(false)}>
             <FaTimes />
           </button>
+        </div>
+      )}
+
+      {/* Settings Panel */}
+      {showSettings && (
+        <div className="settings-overlay">
+          <div className="settings-container">
+            <h2>Settings</h2>
+            <ul className="settings-list">
+              <li>Account</li>
+              <li>Security</li>
+              <li>Privacy</li>
+              <li>Connected Devices</li>
+              <li>Notification Settings</li>
+              <li>About</li>
+            </ul>
+            <button className="close-button" onClick={() => setShowSettings(false)}>
+              <FaTimes />
+            </button>
+          </div>
         </div>
       )}
     </React.Fragment>
