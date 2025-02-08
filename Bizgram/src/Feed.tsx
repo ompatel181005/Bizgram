@@ -17,7 +17,7 @@ const posts: Post[] = [
     id: 1,
     username: "John Doe",
     profilePic: "https://via.placeholder.com/50",
-    image: "https://via.placeholder.com/500",
+    image: "https://via.placeholder.com/800x600",
     caption: "Enjoying the sunset!",
     timestamp: "2 hours ago",
   },
@@ -25,7 +25,7 @@ const posts: Post[] = [
     id: 2,
     username: "Alice Smith",
     profilePic: "https://via.placeholder.com/50",
-    image: "https://via.placeholder.com/500",
+    image: "https://via.placeholder.com/800x600",
     caption: "New adventures!",
     timestamp: "5 hours ago",
   },
@@ -33,7 +33,7 @@ const posts: Post[] = [
     id: 3,
     username: "Emma Brown",
     profilePic: "https://via.placeholder.com/50",
-    image: "https://via.placeholder.com/500",
+    image: "https://via.placeholder.com/800x600",
     caption: "Chilling with friends!",
     timestamp: "1 day ago",
   },
@@ -41,71 +41,27 @@ const posts: Post[] = [
     id: 4,
     username: "Michael Lee",
     profilePic: "https://via.placeholder.com/50",
-    image: "https://via.placeholder.com/500",
+    image: "https://via.placeholder.com/800x600",
     caption: "Workout time!",
     timestamp: "3 days ago",
-  },
-  {
-    id: 5,
-    username: "David Wilson",
-    profilePic: "https://via.placeholder.com/50",
-    image: "https://via.placeholder.com/500",
-    caption: "Loving nature!",
-    timestamp: "4 days ago",
-  },
-  {
-    id: 6,
-    username: "Sophia Davis",
-    profilePic: "https://via.placeholder.com/50",
-    image: "https://via.placeholder.com/500",
-    caption: "Beach vibes!",
-    timestamp: "5 days ago",
-  },
-  {
-    id: 7,
-    username: "Olivia Martinez",
-    profilePic: "https://via.placeholder.com/50",
-    image: "https://via.placeholder.com/500",
-    caption: "Throwback to last weekend!",
-    timestamp: "6 days ago",
-  },
-  {
-    id: 8,
-    username: "Bob Johnson",
-    profilePic: "https://via.placeholder.com/50",
-    image: "https://via.placeholder.com/500",
-    caption: "Hiking trip!",
-    timestamp: "1 week ago",
-  },
-  {
-    id: 9,
-    username: "Chris Evans",
-    profilePic: "https://via.placeholder.com/50",
-    image: "https://via.placeholder.com/500",
-    caption: "Morning coffee!",
-    timestamp: "2 weeks ago",
-  },
-  {
-    id: 10,
-    username: "Lily Parker",
-    profilePic: "https://via.placeholder.com/50",
-    image: "https://via.placeholder.com/500",
-    caption: "City lights!",
-    timestamp: "3 weeks ago",
   },
 ];
 
 const Feed: React.FC = () => {
   return (
     <div
-      className="d-flex flex-column align-items-center p-3 overflow-auto"
-      style={{ maxHeight: "100vh" }}
+      className="d-flex flex-column align-items-center w-100"
+      style={{
+        overflowY: "scroll",
+        height: "100vh",
+        scrollSnapType: "y mandatory",
+      }}
     >
       {posts.map((post) => (
         <Card
           key={post.id}
-          className="mb-4 bg-dark text-white shadow-sm"
-          style={{ width: "80%", maxWidth: "600px" }}
+          className="d-flex flex-column bg-dark text-white w-100"
+          style={{ height: "100vh", scrollSnapAlign: "start" }}
         >
           {/* User Info */}
           <Card.Header className="d-flex align-items-center bg-secondary">
@@ -113,21 +69,27 @@ const Feed: React.FC = () => {
               src={post.profilePic}
               alt={post.username}
               className="rounded-circle me-2"
-              width="40"
-              height="40"
+              width="50"
+              height="50"
             />
             <strong>{post.username}</strong>
           </Card.Header>
 
-          {/* Post Image */}
-          <Card.Img variant="top" src={post.image} className="w-100" />
+          {/* Post Image (Expands to fill screen) */}
+          <div className="d-flex justify-content-center align-items-center flex-grow-1">
+            <Card.Img
+              variant="top"
+              src={post.image}
+              className="w-100 h-100 object-fit-cover"
+            />
+          </div>
 
           {/* Like, Comment, Share Icons */}
           <Card.Body>
             <div className="d-flex justify-content-around mb-2">
-              <FaHeart size={20} className="text-danger" />
-              <FaComment size={20} className="text-info" />
-              <FaShare size={20} className="text-warning" />
+              <FaHeart size={25} className="text-danger" />
+              <FaComment size={25} className="text-info" />
+              <FaShare size={25} className="text-warning" />
             </div>
 
             {/* Caption */}

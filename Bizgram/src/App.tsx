@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "./SideBar";
 import UserList from "./UserList";
-import Feed from "./Feed"; // Import Feed component
+import Feed from "./Feed";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -12,8 +12,13 @@ function App() {
 
       {/* Main Content (Feed) */}
       <div
-        className="flex-grow-1 p-4 overflow-auto d-flex justify-content-center"
-        style={{ marginLeft: "250px", marginRight: "250px", height: "100vh" }}
+        className="flex-grow-1 p-0"
+        style={{
+          marginLeft: "250px",
+          marginRight: "250px",
+          height: "100vh",
+          overflow: "hidden",
+        }}
       >
         <Feed />
       </div>
