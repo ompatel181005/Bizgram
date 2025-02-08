@@ -13,7 +13,7 @@ const users = [
   { id: 7, name: "Chris Martin", imgSrc: "/pfps/pfp_7.jpg" },
   { id: 8, name: "Olivia Turner", imgSrc: "/pfps/pfp_8.jpg" },
   { id: 9, name: "Liam Parker", imgSrc: "/pfps/pfp_9.jpg" },
-  { id: 10, name: "Nathan Brooks", imgSrc: "/pfps/pfp_10.jpg" },
+  { id: 10, name: "Honey Patel", imgSrc: "/pfps/pfp_10.jpg" },
 ];
 
 // Styled Scrollable Container
