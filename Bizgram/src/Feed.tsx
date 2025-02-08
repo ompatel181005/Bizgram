@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Card } from "react-bootstrap";
 import { FaHeart, FaComment, FaShare } from "react-icons/fa";
 
+
 // Import images from Feed_Pics folder
 import image1 from "/Feed_Pics/image1.png";
 import image2 from "/Feed_Pics/image2.png";
