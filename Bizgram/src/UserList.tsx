@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Button } from "react-bootstrap";
 import styled from "styled-components";
 
@@ -30,6 +30,18 @@ const ScrollableContainer = styled.div`
 `;
 
 const UserList: React.FC = () => {
+  // Initialize state to track which user is followed
+  const [followedUsers, setFollowedUsers] = useState<number[]>([]);
+
+  // Function to toggle follow state
+  const handleFollowToggle = (userId: number) => {
+    setFollowedUsers((prev) =>
+      prev.includes(userId)
+        ? prev.filter((id) => id !== userId) // Unfollow if already followed
+        : [...prev, userId] // Follow if not already followed
+    );
+  };
+
   return (
     <div
       className="d-flex flex-column bg-dark text-white p-3 vh-100 position-fixed"
@@ -39,15 +51,15 @@ const UserList: React.FC = () => {
       <div className="d-flex flex-column justify-content-between" style={{ height: "100%" }}>
         {/* Current Connections */}
         <div style={{ flex: 1 }}>
-          <h6 className="mb-3">Current Connections</h6>
+          <h6 className="mb-2">Current Connections</h6>
           <ScrollableContainer style={{ height: "50vh" }}>
             {currentConnections.map((user, index) => (
               <Card
                 key={user.id}
-                className="mb-3 bg-secondary text-white shadow-sm"
+                className="mb-2 bg-secondary text-white shadow-sm"
                 style={{
                   borderRadius: "8px",
-                  marginBottom: index === currentConnections.length - 1 ? "50%" : "1rem",
+                  marginBottom: "0.5rem", // Reduced space between cards
                 }}
               >
                 <Card.Body>
@@ -59,30 +71,34 @@ const UserList: React.FC = () => {
           </ScrollableContainer>
         </div>
 
-        <hr className="my-3" />
+        {/* Reduced spacing between sections */}
+        <hr className="my-2" /> {/* Reduced margin for <hr> */}
 
         {/* Suggested Connections */}
         <div style={{ flex: 1 }}>
-          <h6 className="mb-3" style={{ color: "white" }}>Suggested New Connections</h6>
+          <h6 className="mb-2" style={{ color: "white" }}>Suggested New Connections</h6>
           <ScrollableContainer style={{ height: "50vh" }}>
             {suggestedConnections.map((user, index) => (
               <Card
                 key={user.id}
-                className="mb-3 shadow-sm"
+                className="mb-2 shadow-sm"
                 style={{
                   borderRadius: "8px",
                   backgroundColor: "#333",
-                  marginBottom: index === suggestedConnections.length - 1 ? "50%" : "1rem",
+                  marginBottom: "0.5rem", // Reduced space between cards
                 }}
               >
-                
                 <Card.Body className="d-flex justify-content-between align-items-center" style={{ color: "white" }}>
                   <div>
                     <Card.Title style={{ color: "white" }}>{user.name}</Card.Title>
-                    <Card.Text style={{ color: "white" }}>{user.company}</Card.Text>
+                    <Card.Text style={{ color: "white" }} className="text-muted">{user.company}</Card.Text>
                   </div>
-                  <Button variant="primary" size="sm" >
-                    Follow
+                  <Button
+                    variant={followedUsers.includes(user.id) ? "success" : "primary"}
+                    size="sm"
+                    onClick={() => handleFollowToggle(user.id)}
+                  >
+                    {followedUsers.includes(user.id) ? "Following" : "Follow"}
                   </Button>
                 </Card.Body>
               </Card>
