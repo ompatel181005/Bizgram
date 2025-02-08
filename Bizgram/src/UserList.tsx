@@ -5,14 +5,14 @@ import styled from "styled-components";
 // Sample Data: Users with Names & Profile Pictures from `/public/pfp/`
 const users = [
   { id: 1, name: "John Doe", imgSrc: "/pfps/pfp_1.jpg" },
-  { id: 2, name: "Alice Smith", imgSrc: "/pfps/pfp_2.jpg" },
+  { id: 2, name: "Prince Patel", imgSrc: "/pfps/pfp_2.jpg" },
   { id: 3, name: "Michael Lee", imgSrc: "/pfps/pfp_3.jpg" },
-  { id: 4, name: "Sophia Davis", imgSrc: "/pfps/pfp_4.jpg" },
+  { id: 4, name: "Om Patel", imgSrc: "/pfps/pfp_4.jpg" },
   { id: 5, name: "David Wilson", imgSrc: "/pfps/pfp_5.jpg" },
   { id: 6, name: "Emma Brown", imgSrc: "/pfps/pfp_6.jpg" },
-  { id: 7, name: "Chris Martin", imgSrc: "/pfps/pfp_7.jpg" },
-  { id: 8, name: "Olivia Turner", imgSrc: "/pfps/pfp_8.jpg" },
-  { id: 9, name: "Liam Parker", imgSrc: "/pfps/pfp_9.jpg" },
+  { id: 7, name: "Mahi Patel", imgSrc: "/pfps/pfp_7.jpg" },
+  { id: 8, name: "Uchi Chuchi", imgSrc: "/pfps/pfp_8.jpg" },
+  { id: 9, name: "Princy Patel", imgSrc: "/pfps/pfp_9.jpg" },
   { id: 10, name: "Honey Patel", imgSrc: "/pfps/pfp_10.jpg" },
 ];
 
