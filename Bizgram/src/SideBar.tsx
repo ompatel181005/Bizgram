@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import SearchOverlay from "./SearchOverlay";
+import Settings from "./Settings"; // Import Settings Component
 
 // Random names & actions for notifications
 const names = [
@@ -159,8 +160,12 @@ const Sidebar: React.FC = () => {
           showBadge={notifications.length > 0}
         />
 
-        {/* Settings Button */}
-        <SidebarButton icon={<FaCog className="me-2" />} label="Settings" />
+        {/* Fixed Settings Button */}
+        <SidebarButton
+          icon={<FaCog className="me-2" />}
+          label="Settings"
+          onClick={() => setShowSettings(true)}
+        />
       </div>
 
       {/* Fullscreen Search Overlay */}
@@ -224,6 +229,9 @@ const Sidebar: React.FC = () => {
           </button>
         </div>
       )}
+
+      {/* Fixed Settings Panel */}
+      {showSettings && <Settings onClose={() => setShowSettings(false)} />}        
     </React.Fragment>
   );
 };
