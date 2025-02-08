@@ -11,7 +11,7 @@ const users = [
   { id: 5, name: "David Wilson", imgSrc: "/pfps/pfp_5.jpg" },
   { id: 6, name: "Emma Brown", imgSrc: "/pfps/pfp_6.jpg" },
   { id: 7, name: "Mahi Patel", imgSrc: "/pfps/pfp_7.jpg" },
-  { id: 8, name: "Uchi Chuchi", imgSrc: "/pfps/pfp_8.jpg" },
+  { id: 8, name: "Unchi Chuchi", imgSrc: "/pfps/pfp_8.jpg" },
   { id: 9, name: "Princy Patel", imgSrc: "/pfps/pfp_9.jpg" },
   { id: 10, name: "Honey Patel", imgSrc: "/pfps/pfp_10.jpg" },
 ];
