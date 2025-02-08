@@ -142,6 +142,21 @@ button:focus-visible {
   box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
 }
 
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.close-button:hover {
+  color: red;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
