@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FaSearch } from "react-icons/fa";
 
 const SearchOverlay: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [text, setText] = useState("");
@@ -48,6 +49,7 @@ const SearchOverlay: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             border: "2px solid #646cff", // Accent color for contrast
           }}
         >
+          <FaSearch className="search-icon" />
           <input
             type="text"
             placeholder="Search..."
@@ -78,6 +80,6 @@ const SearchOverlay: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       </div>
     </div>
   );
-};
+}
 
 export default SearchOverlay;
