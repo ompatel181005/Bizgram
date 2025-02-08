@@ -22,7 +22,7 @@ const SidebarContainer = styled.div`
   height: 100vh;
   background: #121212; // Dark background
   color: #fff;
-  font-family: "Poppins, sans-serif"; // Use Poppins font
+  font-family: "Poppins, sans-serif"; // Explicitly set Poppins font
   padding: 20px;
   position: fixed;
   right: 0;
@@ -34,7 +34,7 @@ const SectionTitle = styled.h6`
   font-weight: 600; // Semi-bold for section titles
   color: #fff;
   margin-bottom: 16px;
-  font-family: inherit; // Inherit the font from SidebarContainer
+  font-family: "Poppins, sans-serif"; // Explicitly set Poppins font
 `;
 
 const UserCard = styled(Card)`
@@ -43,7 +43,7 @@ const UserCard = styled(Card)`
   border-radius: 12px;
   margin-bottom: 12px;
   transition: transform 0.2s, box-shadow 0.2s;
-  font-family: inherit; // Inherit the font from SidebarContainer
+  font-family: "Poppins, sans-serif"; // Explicitly set Poppins font
 
   &:hover {
     transform: scale(1.02);
@@ -68,14 +68,14 @@ const UserName = styled(Card.Title)`
   font-weight: 500; // Medium for user names
   color: #fff;
   margin-bottom: 4px;
-  font-family: inherit; // Inherit the font from SidebarContainer
+  font-family: "Poppins, sans-serif"; // Explicitly set Poppins font
 `;
 
 const UserCompany = styled(Card.Text)`
   font-size: 0.9rem;
   font-weight: 400; // Regular for company names
   color: #aaa;
-  font-family: inherit; // Inherit the font from SidebarContainer
+  font-family: "Poppins, sans-serif"; // Explicitly set Poppins font
 `;
 
 const FollowButton = styled(Button)`
@@ -84,7 +84,7 @@ const FollowButton = styled(Button)`
   padding: 6px 12px;
   border-radius: 8px;
   transition: background-color 0.3s;
-  font-family: inherit; // Inherit the font from SidebarContainer
+  font-family: "Poppins, sans-serif"; // Explicitly set Poppins font
 
   &:hover {
     background-color: ${(props) =>
