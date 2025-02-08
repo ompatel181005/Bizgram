@@ -76,6 +76,7 @@ const Sidebar: React.FC = () => {
   const [showPostOptions, setShowPostOptions] = useState(false);
   const [showPostModal, setShowPostModal] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
   const [notifications, setNotifications] = useState<string[]>([]);
   const navigate = useNavigate();
 
