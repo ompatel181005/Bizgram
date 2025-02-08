@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 /* Root Variables */
 :root {
   --primary-text: rgba(255, 255, 255, 0.87);
@@ -9,6 +11,53 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+/* Custom Scrollbar (Optional) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #646cff;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #535bf2;
+}
+
+/* Hover Effects for Cards */
+.UserCard:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Button Hover Effects */
+.FollowButton:hover {
+  background-color: #535bf2 !important;
+}
+
+.FollowButton.btn-success:hover {
+  background-color: #45a049 !important;
+}
+
+/* Hover Effects for Cards */
+.UserCard:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Button Hover Effects */
+.FollowButton:hover {
+  background-color: #535bf2 !important;
+}
+
+.FollowButton.btn-success:hover {
+  background-color: #45a049 !important;
 }
 /* Fullscreen Search Overlay */
 .search-overlay {
@@ -65,7 +114,7 @@
 }
 /* Body Styling */
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'poppins', sans-serif;
   font-size: 1.125em;
   line-height: 1.6;
   margin: 0;
