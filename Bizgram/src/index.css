@@ -1,17 +1,41 @@
+
 :root {
-  font-family: 'Inter', sans-serif;
-  line-height: 1.6;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  --primary-text: rgba(255, 255, 255, 0.87);
+  --background-dark: #121212;
+  --card-bg: #1a1a1a;
+  --border-dark: #333;
+  
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.125em;
+  line-height: 1.6;
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* Allows better content alignment */
+  min-width: 320px;
+  min-height: 100vh;
+  
+  background-color: var(--background-dark);
+  color: var(--primary-text);
+}
+
+h1, h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5em;
+  font-weight: 700;
+  color: white;
+}
+
+h6, p {
+  color: #b0b0b0;
+}
+
 
 a {
   font-weight: 500;
@@ -22,24 +46,6 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  background-color: black ;
-  color: white ;
-  background-color: black !important;
-  color: white !important;
-
-
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
 
 button {
   border-radius: 8px;
@@ -48,27 +54,56 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--card-bg);
+  color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.3s ease-in-out;
 }
+
 button:hover {
   border-color: #646cff;
+  background-color: #292929;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+
+.card {
+  background-color: var(--card-bg);
+  color: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.1);
+}
+
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --primary-text: #213547;
+    --background-dark: #ffffff;
+    --card-bg: #f0f0f0;
+    --border-dark: #d0d0d0;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
+    color: black;
+  }
+
+  body {
+    background-color: var(--background-dark);
+    color: var(--primary-text);
   }
 }
