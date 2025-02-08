@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-const SearchOverlay: React.FC = () => {
+const SearchOverlay: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [text, setText] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const fullText = "What are you looking for?";
 
   useEffect(() => {
@@ -18,12 +19,26 @@ const SearchOverlay: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+    // Add logic to filter/search results here
+  };
+
   return (
     <div className="search-overlay">
       <div className="search-container">
-        <h1 className="typing-text">{text}</h1> {/* Animated Text */}
+        <h1 className="typing-text">{text}</h1>
         <div className="search-box">
-          <input type="text" placeholder="Search..." className="form-control" />
+          <input
+            type="text"
+            placeholder="Search..."
+            className="form-control"
+            value={searchQuery}
+            onChange={handleSearch}
+          />
+          <button className="close-icon" onClick={onClose}>
+            &times;
+          </button>
         </div>
       </div>
     </div>

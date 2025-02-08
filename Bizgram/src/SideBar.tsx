@@ -11,6 +11,7 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import SearchOverlay from "./SearchOverlay"; // Import the SearchOverlay component
 
 // Reusable Button Component for the Sidebar
 const SidebarButton: React.FC<{
@@ -22,8 +23,10 @@ const SidebarButton: React.FC<{
     variant="dark"
     className="w-100 mb-4 text-white d-flex align-items-center py-3"
     aria-label={label}
-    style={{ fontSize: "1.2rem" }}
+    style={{ fontSize: "1.2rem", transition: "background-color 0.3s" }}
     onClick={onClick}
+    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#333")}
+    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#222")}
   >
     {icon}
     {label}
@@ -31,9 +34,9 @@ const SidebarButton: React.FC<{
 );
 
 const Sidebar: React.FC = () => {
-  const [showSearch, setShowSearch] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const navigate = useNavigate();
+  const [showSearch, setShowSearch] = useState(false); // State for search overlay
+  const [searchQuery, setSearchQuery] = useState(""); // State for search input
+  const navigate = useNavigate(); // Hook to handle navigation
 
   return (
     <>
@@ -80,25 +83,7 @@ const Sidebar: React.FC = () => {
 
       {/* Fullscreen Search Overlay */}
       {showSearch && (
-        <div className="search-overlay">
-          <div className="search-container">
-            <h1 className="search-title">What are you looking for?</h1>
-            <div className="search-box">
-              <FaSearch className="search-icon" />
-              <Form.Control
-                type="text"
-                placeholder="Search here..."
-                className="search-input"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              <FaTimes
-                className="close-icon"
-                onClick={() => setShowSearch(false)}
-              />
-            </div>
-          </div>
-        </div>
+        <SearchOverlay onClose={() => setShowSearch(false)} />
       )}
     </>
   );
