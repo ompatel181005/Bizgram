@@ -1,5 +1,5 @@
 :root {
-  font-family: 'Inter', sans-serif;
+  font-family: 'roboto', sans-serif;
   line-height: 1.6;
   font-weight: 400;
 
@@ -37,6 +37,7 @@ body {
 }
 
 h1 {
+  font-family: 'Poppins', sans-serif;
   font-size: 3.2em;
   line-height: 1.1;
 }
