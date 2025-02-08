@@ -13,6 +13,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import SearchOverlay from "./SearchOverlay";
 import Settings from "./Settings"; // Import Settings Component
+import PostSection from "./PostSection"; // Import Post Section
+
 
 // Random names & actions for notifications
 const names = [
@@ -74,7 +76,7 @@ const SidebarButton: React.FC<{
 
 const Sidebar: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false);
-  const [showPostOptions, setShowPostOptions] = useState(false);
+  const [showPostSection, setShowPostSection] = useState(false);
   const [showPostModal, setShowPostModal] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
@@ -142,7 +144,7 @@ const Sidebar: React.FC = () => {
         <SidebarButton
           icon={<FaEdit className="me-2" />}
           label="Post"
-          onClick={() => setShowPostOptions((prev) => !prev)}
+          onClick={() => setShowPostSection(true)}
         />
 
         {/* Messages Button (Navigates to /messages) */}
@@ -232,6 +234,9 @@ const Sidebar: React.FC = () => {
 
       {/* Fixed Settings Panel */}
       {showSettings && <Settings onClose={() => setShowSettings(false)} />}        
+
+      {/* Post Section */}
+      {showPostSection && <PostSection onClose={() => setShowPostSection(false)} />}
     </React.Fragment>
   );
 };
