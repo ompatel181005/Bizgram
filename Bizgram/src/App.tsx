@@ -1,6 +1,7 @@
 import React from "react";
 import Sidebar from "./SideBar";
 import UserList from "./UserList";
+import Feed from "./Feed";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -10,12 +11,16 @@ function App() {
       <Sidebar />
 
       {/* Main Content (Feed) */}
-      {/* Main Content (Feed) */}
       <div
-        className="flex-grow-1 p-4 bg-black text-white"
-        style={{ marginLeft: "250px", marginRight: "250px" }}
+        className="flex-grow-1 p-0"
+        style={{
+          marginLeft: "250px",
+          marginRight: "250px",
+          height: "100vh",
+          overflow: "hidden",
+        }}
       >
-        <h1>Bizgram</h1>
+        <Feed />
       </div>
 
       {/* Right Sidebar (User List) */}
