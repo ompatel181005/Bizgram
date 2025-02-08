@@ -91,7 +91,7 @@ const UserList: React.FC = () => {
                   <Card.Title style={{ color: "#fff", fontSize: "1.1rem" }}>
                     {user.name}
                   </Card.Title>
-                  <Card.Text className="text-muted">{user.company}</Card.Text>
+                  <Card.Text style={{ color: "#aaa", fontSize: "1.1rem" }}>{user.company}</Card.Text>
                 </Card.Body>
               </Card>
             ))}
