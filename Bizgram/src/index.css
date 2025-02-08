@@ -86,7 +86,6 @@ button:focus-visible {
 }
 
 /* Fullscreen Search Overlay */
-/* Fullscreen Search Overlay */
 .search-overlay {
   position: fixed;
   top: 0;
@@ -95,71 +94,11 @@ button:focus-visible {
   height: 100%;
   background: rgba(0, 0, 0, 0.95);
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Align to top */
-  padding-top: 10vh; /* Adjust spacing from the top */
+  justify-content: flex-start;
+  padding-top: 10vh;
   z-index: 1050;
-}
-
-/* Search Container */
-.search-container {
-  width: 80%;
-  max-width: 600px;
-  text-align: center;
-}
-
-/* Title Text */
-.search-title {
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 30px; /* Increased spacing between title and search bar */
-}
-
-/* Search Box */
-.search-box {
-  display: flex;
-  align-items: center;
-  background: white;
-  padding: 12px 15px;
-  border-radius: 30px;
-  width: 100%;
-  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
-}
-
-/* Search Input */
-.search-input {
-  border: none;
-  outline: none;
-  flex-grow: 1;
-  font-size: 1.2rem;
-}
-
-/* Search Icon */
-.search-icon {
-  font-size: 1.5rem;
-  color: gray;
-  margin-right: 10px;
-}
-
-/* Close Icon */
-.close-icon {
-  font-size: 1.5rem;
-  color: gray;
-  cursor: pointer;
-  margin-left: 10px;
-}
-
-.close-icon:hover {
-  color: red;
-}
-
-/* Cursor Blinking Effect */
-@keyframes blink {
-  50% {
-    border-color: transparent;
-  }
 }
 
 /* Typing Animation */
@@ -172,7 +111,13 @@ button:focus-visible {
   }
 }
 
-/* Animated Text */
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* Animated Typing Text */
 .typing-text {
   font-size: 2rem;
   font-weight: bold;
@@ -183,6 +128,18 @@ button:focus-visible {
   display: inline-block;
   width: 0;
   animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
+}
+
+/* Search Box */
+.search-box {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 12px 15px;
+  border-radius: 30px;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
 }
 
 
