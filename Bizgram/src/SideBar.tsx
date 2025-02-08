@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import SearchOverlay from "./SearchOverlay";
+import Settings from "./Settings"; // Import Settings Component
 
 // Random names & actions for notifications
 const names = [
