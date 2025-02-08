@@ -46,7 +46,7 @@ const UserList: React.FC = () => {
         {/* User Profiles Section */}
         <div style={{ flex: 1 }}>
           <h6 className="mb-2 text-white" style={{ fontSize: "1.2rem" }}>
-            User Profiles
+            Mentor Profiles
           </h6>
           <ScrollableContainer
             style={{
