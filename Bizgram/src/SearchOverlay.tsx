@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { FaTimes, FaUser } from "react-icons/fa";
+import { FaTimes, FaSearch } from "react-icons/fa";
 
-// Random Avatar Generator (Uses DiceBear Avatars)
+// Function to generate a random avatar based on name
 const getRandomAvatar = (name: string) => {
   return `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(name)}`;
 };
 
-// Random Business Names
+// List of random business categories
 const businessList = [
   "Tech Innovators", "Handmade Crafts", "Personal Finance Hub",
   "Health & Wellness", "AI & Automation", "Luxury Clothing",
   "Freelance Design", "Digital Marketing", "Organic Skincare",
 ];
 
-// Generate a random profile
+// Function to generate a random business for a profile
 const generateProfile = (name: string) => {
   const randomBusiness = businessList[Math.floor(Math.random() * businessList.length)];
   return {
@@ -28,17 +28,17 @@ interface SearchOverlayProps {
 }
 
 const SearchOverlay: React.FC<SearchOverlayProps> = ({ closeOverlay }) => {
-  const [text, setText] = useState("");
-  const [results, setResults] = useState<{ name: string; business: string; avatar: string }[]>([]);
+  const [searchText, setSearchText] = useState(""); // Stores input text
+  const [profile, setProfile] = useState<{ name: string; business: string; avatar: string } | null>(null);
 
   useEffect(() => {
-    if (text.trim() !== "") {
-      const profile = generateProfile(text);
-      setResults([profile]); // Show one result for now
+    if (searchText.trim() !== "") {
+      const newProfile = generateProfile(searchText);
+      setProfile(newProfile);
     } else {
-      setResults([]);
+      setProfile(null);
     }
-  }, [text]);
+  }, [searchText]);
 
   // Close overlay when pressing ESC
   useEffect(() => {
@@ -60,28 +60,31 @@ const SearchOverlay: React.FC<SearchOverlayProps> = ({ closeOverlay }) => {
 
       <div className="search-container">
         <h1 className="typing-text">What are you looking for?</h1>
+
+        {/* Search Box */}
         <div className="search-box">
+          <FaSearch className="search-icon" />
           <input
             type="text"
             placeholder="Search for a person..."
-            className="form-control"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
+            className="search-input"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
           />
         </div>
 
-        {/* Search Results */}
-        <div className="search-results">
-          {results.length > 0 && (
+        {/* Show Profile if Input is Not Empty */}
+        {profile && (
+          <div className="search-results">
             <div className="profile-card">
-              <img src={results[0].avatar} alt={results[0].name} className="profile-avatar" />
+              <img src={profile.avatar} alt={profile.name} className="profile-avatar" />
               <div>
-                <h3>{results[0].name}</h3>
-                <p className="profile-business">{results[0].business}</p>
+                <h3>{profile.name}</h3>
+                <p className="profile-business">{profile.business}</p>
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
