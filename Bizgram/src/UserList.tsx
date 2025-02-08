@@ -1,62 +1,41 @@
 import React, { useState } from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import styled from "styled-components";
 
-// Sample Data
-const currentConnections = [
-  { id: 1, name: "John Doe", company: "TechCorp" },
-  { id: 2, name: "Alice Smith", company: "InnovateX" },
-  { id: 3, name: "Bob Johnson", company: "FinServe" },
+// Sample Data: Users with Names & Profile Pictures from `/public/pfp/`
+const users = [
+  { id: 1, name: "John Doe", imgSrc: "/pfps/pfp_1.jpg" },
+  { id: 2, name: "Alice Smith", imgSrc: "/pfps/pfp_2.jpg" },
+  { id: 3, name: "Michael Lee", imgSrc: "/pfps/pfp_3.jpg" },
+  { id: 4, name: "Sophia Davis", imgSrc: "/pfps/pfp_4.jpg" },
+  { id: 5, name: "David Wilson", imgSrc: "/pfps/pfp_5.jpg" },
+  { id: 6, name: "Emma Brown", imgSrc: "/pfps/pfp_6.jpg" },
+  { id: 7, name: "Chris Martin", imgSrc: "/pfps/pfp_7.jpg" },
+  { id: 8, name: "Olivia Turner", imgSrc: "/pfps/pfp_8.jpg" },
+  { id: 9, name: "Liam Parker", imgSrc: "/pfps/pfp_9.jpg" },
+  { id: 10, name: "Nathan Brooks", imgSrc: "/pfps/pfp_10.jpg" },
 ];
 
-const suggestedConnections = [
-  { id: 4, name: "Emma Brown", company: "Healthify" },
-  { id: 5, name: "Michael Lee", company: "CyberNet" },
-  { id: 6, name: "Sophia Davis", company: "CloudBase" },
-  { id: 7, name: "David Wilson", company: "AI Labs" },
-];
-
-// Styled component for the scrollable container
+// Styled Scrollable Container
 const ScrollableContainer = styled.div`
   overflow-y: auto;
-  -ms-overflow-style: none; /* For IE 10+ */
-  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   padding-right: 20px;
 
-  /* Hide scrollbar in WebKit browsers (Chrome, Safari) */
   ::-webkit-scrollbar {
     display: none;
   }
 `;
 
 const UserList: React.FC = () => {
-  const [followedUsers, setFollowedUsers] = useState<number[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [visibleConnections, setVisibleConnections] = useState(3);
-
-  const handleFollowToggle = (userId: number) => {
-    setFollowedUsers((prev) =>
-      prev.includes(userId)
-        ? prev.filter((id) => id !== userId)
-        : [...prev, userId]
-    );
-  };
-
-  const loadMoreConnections = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setVisibleConnections((prev) => prev + 3);
-      setLoading(false);
-    }, 1000); // Simulate API call delay
-  };
-
   return (
     <div
       className="d-flex flex-column bg-dark text-white p-3 vh-100 position-fixed"
       style={{
         width: "280px",
         right: 0,
-        background: "#121212", // Dark background
+        background: "#121212",
         fontFamily: "'Poppins', sans-serif",
       }}
     >
@@ -64,102 +43,49 @@ const UserList: React.FC = () => {
         className="d-flex flex-column justify-content-between"
         style={{ height: "100%" }}
       >
-        {/* Current Connections */}
+        {/* User Profiles Section */}
         <div style={{ flex: 1 }}>
-          <h6 className="mb-2" style={{ color: "#fff", fontSize: "1.2rem" }}>
-            Current Connections
+          <h6 className="mb-2 text-white" style={{ fontSize: "1.2rem" }}>
+            User Profiles
           </h6>
-          <ScrollableContainer style={{ height: "50vh" }}>
-            {currentConnections.map((user) => (
-              <Card
-                key={user.id}
-                className="mb-2 shadow-sm"
-                style={{
-                  borderRadius: "12px",
-                  background: "#1e1e1e", // Slightly lighter dark background
-                  border: "none",
-                  transition: "transform 0.2s",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "scale(1.02)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "scale(1)";
-                }}
-              >
-                <Card.Body>
-                  <Card.Title style={{ color: "#fff", fontSize: "1.1rem" }}>
-                    {user.name}
-                  </Card.Title>
-                  <Card.Text style={{ color: "#aaa", fontSize: "1.1rem" }}>{user.company}</Card.Text>
-                </Card.Body>
-              </Card>
-            ))}
-          </ScrollableContainer>
-        </div>
-
-        <hr className="my-2" style={{ borderColor: "#444" }} />
-
-        {/* Suggested Connections */}
-        <div style={{ flex: 1 }}>
-          <h6 className="mb-2" style={{ color: "#fff", fontSize: "1.2rem" }}>
-            Suggested New Connections
-          </h6>
-          <ScrollableContainer style={{ height: "50vh" }}>
-            {suggestedConnections.slice(0, visibleConnections).map((user) => (
-              <Card
-                key={user.id}
-                className="mb-2 shadow-sm"
-                style={{
-                  borderRadius: "12px",
-                  background: "#1e1e1e", // Slightly lighter dark background
-                  border: "none",
-                  transition: "transform 0.2s",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "scale(1.02)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "scale(1)";
-                }}
-              >
-                <Card.Body
-                  className="d-flex justify-content-between align-items-center"
-                  style={{ color: "white" }}
+          <ScrollableContainer
+            style={{
+              height: "85vh",
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "10px",
+            }}
+          >
+            {users.map((user) => (
+              <div key={user.id} className="text-center">
+                <img
+                  src={user.imgSrc}
+                  alt={user.name}
+                  className="rounded-circle"
+                  width="70"
+                  height="70"
+                  style={{
+                    objectFit: "cover",
+                    transition: "transform 0.2s",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "scale(1.1)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "scale(1)";
+                  }}
+                />
+                <p
+                  style={{
+                    fontSize: "0.9rem",
+                    marginTop: "5px",
+                    color: "#fff",
+                  }}
                 >
-                  <div>
-                    <Card.Title style={{ color: "#fff", fontSize: "1.1rem" }}>
-                      {user.name}
-                    </Card.Title>
-                    <Card.Text style={{ color: "#aaa" }}>{user.company}</Card.Text>
-                  </div>
-                  <Button
-                    variant={followedUsers.includes(user.id) ? "success" : "primary"}
-                    size="sm"
-                    onClick={() => handleFollowToggle(user.id)}
-                    style={{
-                      transition: "background-color 0.3s",
-                      fontFamily: "'Poppins', sans-serif",
-                      background: followedUsers.includes(user.id) ? "#4CAF50" : "#646cff", // Accent color
-                      border: "none",
-                    }}
-                  >
-                    {followedUsers.includes(user.id) ? "Following" : "Follow"}
-                  </Button>
-                </Card.Body>
-              </Card>
+                  {user.name}
+                </p>
+              </div>
             ))}
-            {visibleConnections < suggestedConnections.length && (
-              <Button
-                variant="outline-light"
-                className="w-100 mt-2"
-                onClick={loadMoreConnections}
-                disabled={loading}
-                style={{ fontFamily: "'Poppins', sans-serif" }}
-              >
-                {loading ? "Loading..." : "View More"}
-              </Button>
-            )}
           </ScrollableContainer>
         </div>
       </div>
