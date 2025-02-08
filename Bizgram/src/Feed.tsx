@@ -14,6 +14,17 @@ import image8 from "/Feed_Pics/image8.png";
 import image9 from "/Feed_Pics/image9.png";
 import image10 from "/Feed_Pics/image10.png";
 
+import pfp_1 from "/pfps/pfp_1.jpg";
+import pfp_2 from "/pfps/pfp_2.jpg";
+import pfp_3 from "/pfps/pfp_3.jpg";
+import pfp_4 from "/pfps/pfp_4.jpg";
+import pfp_5 from "/pfps/pfp_5.jpg";
+import pfp_6 from "/pfps/pfp_6.jpg";
+import pfp_7 from "/pfps/pfp_7.jpg";
+import pfp_8 from "/pfps/pfp_8.jpg";
+import pfp_9 from "/pfps/pfp_9.jpg";
+import pfp_10 from "/pfps/pfp_10.jpg";
+
 interface Post {
   id: number;
   username: string;
@@ -30,7 +41,7 @@ const posts: Post[] = [
     id: 1,
     username: "John Doe",
     businessDescription: "Handmade leather goods",
-    profilePic: image1,
+    profilePic: pfp_1,
     image: image1,
     caption: "Enjoying the sunset!",
     timestamp: "2 hours ago",
@@ -39,7 +50,7 @@ const posts: Post[] = [
     id: 2,
     username: "Alice Smith",
     businessDescription: "Custom jewelry designer",
-    profilePic: image2,
+    profilePic: pfp_2,
     image: image2,
     caption: "New adventures!",
     timestamp: "5 hours ago",
@@ -48,7 +59,7 @@ const posts: Post[] = [
     id: 3,
     username: "Emma Brown",
     businessDescription: "Organic skincare products",
-    profilePic: image3,
+    profilePic: pfp_3,
     image: image3,
     caption: "Chilling with friends!",
     timestamp: "1 day ago",
@@ -57,7 +68,7 @@ const posts: Post[] = [
     id: 4,
     username: "Michael Lee",
     businessDescription: "Tech gadgets & accessories",
-    profilePic: image4,
+    profilePic: pfp_4,
     image: image4,
     caption: "Workout time!",
     timestamp: "3 days ago",
@@ -66,7 +77,7 @@ const posts: Post[] = [
     id: 5,
     username: "David Wilson",
     businessDescription: "Personalized artwork",
-    profilePic: image5,
+    profilePic: pfp_5,
     image: image5,
     caption: "Loving nature!",
     timestamp: "4 days ago",
@@ -75,7 +86,7 @@ const posts: Post[] = [
     id: 6,
     username: "Sophia Davis",
     businessDescription: "Handmade candles & decor",
-    profilePic: image6,
+    profilePic: pfp_6,
     image: image6,
     caption: "Beach vibes!",
     timestamp: "5 days ago",
@@ -84,7 +95,7 @@ const posts: Post[] = [
     id: 7,
     username: "Olivia Martinez",
     businessDescription: "Eco-friendly fashion",
-    profilePic: image7,
+    profilePic: pfp_7,
     image: image7,
     caption: "Throwback to last weekend!",
     timestamp: "6 days ago",
@@ -93,7 +104,7 @@ const posts: Post[] = [
     id: 8,
     username: "Bob Johnson",
     businessDescription: "Custom furniture craftsman",
-    profilePic: image8,
+    profilePic: pfp_8,
     image: image8,
     caption: "Hiking trip!",
     timestamp: "1 week ago",
@@ -102,7 +113,7 @@ const posts: Post[] = [
     id: 9,
     username: "Chris Evans",
     businessDescription: "Local coffee roaster",
-    profilePic: image9,
+    profilePic: pfp_9,
     image: image9,
     caption: "Morning coffee!",
     timestamp: "2 weeks ago",
@@ -111,7 +122,7 @@ const posts: Post[] = [
     id: 10,
     username: "Lily Parker",
     businessDescription: "Boutique clothing brand",
-    profilePic: image10,
+    profilePic: pfp_10,
     image: image10,
     caption: "City lights!",
     timestamp: "3 weeks ago",
