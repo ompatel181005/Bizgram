@@ -18,7 +18,7 @@ const SidebarButton: React.FC<{ icon: JSX.Element; label: string }> = ({ icon, l
 const Sidebar: React.FC = () => {
   return (
     <div className="sidebar d-flex flex-column bg-dark text-white p-3 vh-100 position-fixed">
-      <h1>BizzGram</h1>
+      <h1>BizGram</h1>
       {/* Spacer */}
       <div className="flex-grow-1"></div>
       
