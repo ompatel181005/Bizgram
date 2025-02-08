@@ -1,25 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { FaSearch } from "react-icons/fa";
 
-const SearchOverlay: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-  const [text, setText] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
-  const fullText = "What are you looking for?";
+interface SearchOverlayProps {
+  onClose: () => void; // Function to close the overlay
+}
 
+const SearchOverlay: React.FC<SearchOverlayProps> = ({ onClose }) => {
+  const [text, setText] = useState(""); // State for the animated text
+  const [searchQuery, setSearchQuery] = useState(""); // State for the search input
+  const fullText = "What are you looking for?"; // Text to be animated
+
+  // Typing animation for the text
   useEffect(() => {
     let index = 0;
     const interval = setInterval(() => {
       if (index < fullText.length) {
-        setText(fullText.slice(0, index + 1));
+        setText(fullText.slice(0, index + 1)); // Add one letter at a time
         index++;
       } else {
-        clearInterval(interval);
+        clearInterval(interval); // Stop the animation when the text is complete
       }
     }, 100); // Typing speed (100ms per letter)
 
-    return () => clearInterval(interval);
+    return () => clearInterval(interval); // Cleanup on unmount
   }, []);
 
+  // Handle search input change
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
     // Add logic to filter/search results here
@@ -34,12 +39,23 @@ const SearchOverlay: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       }}
     >
       <div className="search-container">
+        {/* Animated Text */}
         <h1
           className="typing-text"
-          style={{ color: "#fff", fontSize: "2.5rem", fontWeight: "600" }}
+          style={{
+            color: "#fff",
+            fontSize: "2.5rem",
+            fontWeight: "600",
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            borderRight: "3px solid #fff", // Blinking cursor effect
+            width: `${text.length}ch`, // Adjust width based on text length
+          }}
         >
           {text}
         </h1>
+
+        {/* Search Box */}
         <div
           className="search-box"
           style={{
@@ -49,11 +65,10 @@ const SearchOverlay: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             border: "2px solid #646cff", // Accent color for contrast
           }}
         >
-          <FaSearch className="search-icon" />
           <input
             type="text"
             placeholder="Search..."
-            className="form-control"
+            className="search-input"
             value={searchQuery}
             onChange={handleSearch}
             style={{
@@ -61,8 +76,10 @@ const SearchOverlay: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               border: "none",
               color: "#fff", // White text for contrast
               fontSize: "1.2rem",
+              outline: "none", // Remove default outline
             }}
           />
+          {/* Close Button */}
           <button
             className="close-icon"
             onClick={onClose}
@@ -80,6 +97,6 @@ const SearchOverlay: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       </div>
     </div>
   );
-}
+};
 
 export default SearchOverlay;
