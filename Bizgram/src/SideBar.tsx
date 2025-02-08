@@ -166,6 +166,65 @@ const Sidebar: React.FC = () => {
 
       {/* Fullscreen Search Overlay */}
       {showSearch && <SearchOverlay onClose={() => setShowSearch(false)} />}
+
+      {/* Post Modal */}
+      <Modal
+        show={showPostModal}
+        onHide={() => setShowPostModal(false)}
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Create new post</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="text-center">
+          <div
+            className="upload-container"
+            style={{
+              border: "2px solid red", // Debugging border
+              padding: "20px", // Add padding
+            }}
+          >
+            <div className="icon-placeholder mb-3">
+              {/* Icon representing photo/video */}
+              <FaEdit size={50} />
+            </div>
+            <h4>Drag photos and videos here</h4>
+            <Button
+              variant="primary"
+              className="mt-3"
+              style={{
+                border: "2px solid blue", // Debugging border
+              }}
+            >
+              Select from computer
+            </Button>
+          </div>
+        </Modal.Body>
+      </Modal>
+
+      {/* Notifications Panel */}
+      {showNotifications && (
+        <div className="notifications-overlay">
+          <div className="notifications-container">
+            <h2>Notifications</h2>
+            {notifications.length > 0 ? (
+              notifications.map((notification, index) => (
+                <div key={index} className="notification-item">
+                  <p>{notification}</p>
+                </div>
+              ))
+            ) : (
+              <p className="no-notifications">No new notifications</p>
+            )}
+          </div>
+          <button
+            className="close-button"
+            onClick={() => setShowNotifications(false)}
+          >
+            <FaTimes />
+          </button>
+        </div>
+      )}
     </React.Fragment>
   );
 };
