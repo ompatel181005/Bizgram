@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import SearchOverlay from "./SearchOverlay";
+import Settings from "./Settings"; // Import Settings Component
 
 // Random names & actions for notifications
 const names = [
@@ -224,25 +225,8 @@ const Sidebar: React.FC = () => {
         </div>
       )}
 
-      {/* Settings Panel */}
-      {showSettings && (
-        <div className="settings-overlay">
-          <div className="settings-container">
-            <h2>Settings</h2>
-            <ul className="settings-list">
-              <li>Account</li>
-              <li>Security</li>
-              <li>Privacy</li>
-              <li>Connected Devices</li>
-              <li>Notification Settings</li>
-              <li>About</li>
-            </ul>
-            <button className="close-button" onClick={() => setShowSettings(false)}>
-              <FaTimes />
-            </button>
-          </div>
-        </div>
-      )}
+      {/* Updated Settings Panel */}
+      {showSettings && <Settings onClose={() => setShowSettings(false)} />}
     </React.Fragment>
   );
 };
