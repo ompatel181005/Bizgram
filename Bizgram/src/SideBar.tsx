@@ -7,13 +7,8 @@ const Sidebar: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false);
 
   return (
-    <div className="sidebar d-flex flex-column bg-dark text-white p-3 vh-100 position-fixed">
-      <h1>BizzGram</h1>
-      {/* Spacer */}
-      <div className="flex-grow-1"></div>
-      {/* Profile Button */}
-      <SidebarButton icon={<FaUser className="me-2" />} label="Profile" />
     <>
+      
       <div className="d-flex flex-column bg-dark text-white p-3 vh-100 position-fixed" style={{ width: "250px" }}>
         {/* Profile Button */}
         <Button variant="dark" className="w-100 mb-3 d-flex align-items-center">
