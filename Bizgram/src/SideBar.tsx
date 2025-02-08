@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
 import {
   FaUser,
@@ -22,6 +22,7 @@ const generateNotification = () => {
   const randomAction = actions[Math.floor(Math.random() * actions.length)];
   return `${randomName} ${randomAction}`;
 };
+
 // Reusable Button Component for the Sidebar
 const SidebarButton: React.FC<{
   icon: React.ReactNode;
@@ -54,7 +55,6 @@ const SidebarButton: React.FC<{
     {icon}
     <span style={{ marginLeft: "10px" }}>{label}</span>
     {showBadge && <span className="notification-badge"></span>}
-
   </Button>
 );
 
@@ -171,13 +171,25 @@ const Sidebar: React.FC = () => {
           <Modal.Title>Create new post</Modal.Title>
         </Modal.Header>
         <Modal.Body className="text-center">
-          <div className="upload-container">
+          <div
+            className="upload-container"
+            style={{
+              border: "2px solid red", // Debugging border
+              padding: "20px", // Add padding
+            }}
+          >
             <div className="icon-placeholder mb-3">
               {/* Icon representing photo/video */}
               <FaEdit size={50} />
             </div>
             <h4>Drag photos and videos here</h4>
-            <Button variant="primary" className="mt-3">
+            <Button
+              variant="primary"
+              className="mt-3"
+              style={{
+                border: "2px solid blue", // Debugging border
+              }}
+            >
               Select from computer
             </Button>
           </div>
