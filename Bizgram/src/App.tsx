@@ -15,7 +15,7 @@ function App() {
         className="flex-grow-1 p-4 bg-black text-white"
         style={{ marginLeft: "250px", marginRight: "250px" }}
       >
-        <h1>Feed Goes Here</h1>
+        <h1>Bizgram</h1>
       </div>
 
       {/* Right Sidebar (User List) */}
