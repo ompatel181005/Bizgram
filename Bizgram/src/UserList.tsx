@@ -53,21 +53,44 @@ const UserList: React.FC = () => {
   return (
     <div
       className="d-flex flex-column bg-dark text-white p-3 vh-100 position-fixed"
-      style={{ width: "250px", right: 0 }}
+      style={{
+        width: "280px",
+        right: 0,
+        background: "#121212", // Dark background
+        fontFamily: "'Poppins', sans-serif",
+      }}
     >
-      <div className="d-flex flex-column justify-content-between" style={{ height: "100%" }}>
+      <div
+        className="d-flex flex-column justify-content-between"
+        style={{ height: "100%" }}
+      >
         {/* Current Connections */}
         <div style={{ flex: 1 }}>
-          <h6 className="mb-2">Current Connections</h6>
+          <h6 className="mb-2" style={{ color: "#fff", fontSize: "1.2rem" }}>
+            Current Connections
+          </h6>
           <ScrollableContainer style={{ height: "50vh" }}>
             {currentConnections.map((user) => (
               <Card
                 key={user.id}
-                className="mb-2 bg-secondary text-white shadow-sm"
-                style={{ borderRadius: "8px", marginBottom: "0.5rem" }}
+                className="mb-2 shadow-sm"
+                style={{
+                  borderRadius: "12px",
+                  background: "#1e1e1e", // Slightly lighter dark background
+                  border: "none",
+                  transition: "transform 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "scale(1.02)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "scale(1)";
+                }}
               >
                 <Card.Body>
-                  <Card.Title>{user.name}</Card.Title>
+                  <Card.Title style={{ color: "#fff", fontSize: "1.1rem" }}>
+                    {user.name}
+                  </Card.Title>
                   <Card.Text className="text-muted">{user.company}</Card.Text>
                 </Card.Body>
               </Card>
@@ -75,11 +98,11 @@ const UserList: React.FC = () => {
           </ScrollableContainer>
         </div>
 
-        <hr className="my-2" />
+        <hr className="my-2" style={{ borderColor: "#444" }} />
 
         {/* Suggested Connections */}
         <div style={{ flex: 1 }}>
-          <h6 className="mb-2" style={{ color: "white" }}>
+          <h6 className="mb-2" style={{ color: "#fff", fontSize: "1.2rem" }}>
             Suggested New Connections
           </h6>
           <ScrollableContainer style={{ height: "50vh" }}>
@@ -87,20 +110,39 @@ const UserList: React.FC = () => {
               <Card
                 key={user.id}
                 className="mb-2 shadow-sm"
-                style={{ borderRadius: "8px", backgroundColor: "#333", marginBottom: "0.5rem" }}
+                style={{
+                  borderRadius: "12px",
+                  background: "#1e1e1e", // Slightly lighter dark background
+                  border: "none",
+                  transition: "transform 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "scale(1.02)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "scale(1)";
+                }}
               >
-                <Card.Body className="d-flex justify-content-between align-items-center" style={{ color: "white" }}>
+                <Card.Body
+                  className="d-flex justify-content-between align-items-center"
+                  style={{ color: "white" }}
+                >
                   <div>
-                    <Card.Title style={{ color: "white" }}>{user.name}</Card.Title>
-                    <Card.Text style={{ color: "white" }} className="text-muted">
-                      {user.company}
-                    </Card.Text>
+                    <Card.Title style={{ color: "#fff", fontSize: "1.1rem" }}>
+                      {user.name}
+                    </Card.Title>
+                    <Card.Text style={{ color: "#aaa" }}>{user.company}</Card.Text>
                   </div>
                   <Button
                     variant={followedUsers.includes(user.id) ? "success" : "primary"}
                     size="sm"
                     onClick={() => handleFollowToggle(user.id)}
-                    style={{ transition: "background-color 0.3s" }}
+                    style={{
+                      transition: "background-color 0.3s",
+                      fontFamily: "'Poppins', sans-serif",
+                      background: followedUsers.includes(user.id) ? "#4CAF50" : "#646cff", // Accent color
+                      border: "none",
+                    }}
                   >
                     {followedUsers.includes(user.id) ? "Following" : "Follow"}
                   </Button>
@@ -113,6 +155,7 @@ const UserList: React.FC = () => {
                 className="w-100 mt-2"
                 onClick={loadMoreConnections}
                 disabled={loading}
+                style={{ fontFamily: "'Poppins', sans-serif" }}
               >
                 {loading ? "Loading..." : "View More"}
               </Button>

@@ -25,18 +25,53 @@ const SearchOverlay: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   };
 
   return (
-    <div className="search-overlay">
+    <div
+      className="search-overlay"
+      style={{
+        background: "#121212", // Dark background
+        fontFamily: "'Poppins', sans-serif",
+      }}
+    >
       <div className="search-container">
-        <h1 className="typing-text">{text}</h1>
-        <div className="search-box">
+        <h1
+          className="typing-text"
+          style={{ color: "#fff", fontSize: "2.5rem", fontWeight: "600" }}
+        >
+          {text}
+        </h1>
+        <div
+          className="search-box"
+          style={{
+            background: "#1e1e1e", // Slightly lighter dark background
+            borderRadius: "30px",
+            padding: "10px 20px",
+            border: "2px solid #646cff", // Accent color for contrast
+          }}
+        >
           <input
             type="text"
             placeholder="Search..."
             className="form-control"
             value={searchQuery}
             onChange={handleSearch}
+            style={{
+              background: "transparent",
+              border: "none",
+              color: "#fff", // White text for contrast
+              fontSize: "1.2rem",
+            }}
           />
-          <button className="close-icon" onClick={onClose}>
+          <button
+            className="close-icon"
+            onClick={onClose}
+            style={{
+              background: "none",
+              border: "none",
+              color: "#646cff", // Accent color
+              fontSize: "1.5rem",
+              cursor: "pointer",
+            }}
+          >
             &times;
           </button>
         </div>

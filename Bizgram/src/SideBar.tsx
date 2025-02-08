@@ -11,7 +11,7 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import SearchOverlay from "./SearchOverlay"; // Import the SearchOverlay component
+import SearchOverlay from "./SearchOverlay";
 
 // Reusable Button Component for the Sidebar
 const SidebarButton: React.FC<{
@@ -23,30 +23,55 @@ const SidebarButton: React.FC<{
     variant="dark"
     className="w-100 mb-4 text-white d-flex align-items-center py-3"
     aria-label={label}
-    style={{ fontSize: "1.2rem", transition: "background-color 0.3s" }}
+    style={{
+      fontSize: "1.2rem",
+      transition: "background-color 0.3s, transform 0.2s",
+      fontFamily: "'Poppins', sans-serif",
+      background: "#1e1e1e", // Dark background
+      border: "none",
+      color: "#fff", // White text
+    }}
     onClick={onClick}
-    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#333")}
-    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#222")}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.backgroundColor = "#646cff"; // Accent color on hover
+      e.currentTarget.style.transform = "scale(1.02)";
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.backgroundColor = "#1e1e1e";
+      e.currentTarget.style.transform = "scale(1)";
+    }}
   >
     {icon}
-    {label}
+    <span style={{ marginLeft: "10px" }}>{label}</span>
   </Button>
 );
 
 const Sidebar: React.FC = () => {
-  const [showSearch, setShowSearch] = useState(false); // State for search overlay
-  const [searchQuery, setSearchQuery] = useState(""); // State for search input
-  const navigate = useNavigate(); // Hook to handle navigation
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   return (
     <>
       {/* Sidebar */}
-      <div className="sidebar d-flex flex-column bg-dark text-white p-3 vh-100 position-fixed">
+      <div
+        className="sidebar d-flex flex-column bg-dark text-white p-3 vh-100 position-fixed"
+        style={{
+          background: "#121212", // Dark background
+          fontFamily: "'Poppins', sans-serif",
+          width: "280px",
+        }}
+      >
         {/* Clickable Logo */}
         <h1
           className="cursor-pointer text-center mb-4"
           onClick={() => navigate("/")}
-          style={{ cursor: "pointer" }}
+          style={{
+            cursor: "pointer",
+            color: "#646cff", // Accent color
+            fontSize: "2rem",
+            fontWeight: "700",
+          }}
         >
           BizzGram
         </h1>
@@ -82,9 +107,7 @@ const Sidebar: React.FC = () => {
       </div>
 
       {/* Fullscreen Search Overlay */}
-      {showSearch && (
-        <SearchOverlay onClose={() => setShowSearch(false)} />
-      )}
+      {showSearch && <SearchOverlay onClose={() => setShowSearch(false)} />}
     </>
   );
 };
