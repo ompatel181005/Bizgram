@@ -1,4 +1,4 @@
-
+/* Root Variables */
 :root {
   --primary-text: rgba(255, 255, 255, 0.87);
   --background-dark: #121212;
@@ -11,6 +11,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Body Styling */
 body {
   font-family: 'Inter', sans-serif;
   font-size: 1.125em;
@@ -25,6 +26,7 @@ body {
   color: var(--primary-text);
 }
 
+/* Headings */
 h1, h2 {
   font-family: 'Poppins', sans-serif;
   font-size: 2.5em;
@@ -36,7 +38,7 @@ h6, p {
   color: #b0b0b0;
 }
 
-
+/* Links */
 a {
   font-weight: 500;
   color: #646cff;
@@ -46,7 +48,7 @@ a:hover {
   color: #535bf2;
 }
 
-
+/* Buttons */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -70,7 +72,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-
+/* Card Styling */
 .card {
   background-color: var(--card-bg);
   color: white;
@@ -85,8 +87,10 @@ button:focus-visible {
   box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.1);
 }
 
-/* Fullscreen Search Overlay */
-/* Fullscreen Search Overlay */
+/* =================== */
+/* 🔍 Fullscreen Search Overlay */
+/* =================== */
+
 .search-overlay {
   position: fixed;
   top: 0;
@@ -109,7 +113,7 @@ button:focus-visible {
   text-align: center;
 }
 
-/* Title Text */
+/* Title Text (Typing Animation) */
 .search-title {
   color: white;
   font-size: 2rem;
@@ -155,6 +159,29 @@ button:focus-visible {
   color: red;
 }
 
+/* =================== */
+/* ✏️ Close Button Styling */
+/* =================== */
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.close-button:hover {
+  color: red;
+}
+
+/* =================== */
+/* 🔤 Typing Animation */
+/* =================== */
+
 /* Cursor Blinking Effect */
 @keyframes blink {
   50% {
@@ -185,7 +212,9 @@ button:focus-visible {
   animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
 }
 
-
+/* =================== */
+/* 🌗 Light Mode Styles */
+/* =================== */
 @media (prefers-color-scheme: light) {
   :root {
     --primary-text: #213547;
