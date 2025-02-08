@@ -94,40 +94,24 @@ button:focus-visible {
   height: 100%;
   background: rgba(0, 0, 0, 0.95);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding-top: 10vh;
+  justify-content: center;
   z-index: 1050;
 }
 
-/* Typing Animation */
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+/* Search Container */
+.search-container {
+  text-align: center;
+  width: 80%;
+  max-width: 600px;
 }
 
-@keyframes blink {
-  50% {
-    border-color: transparent;
-  }
-}
-
-/* Animated Typing Text */
-.typing-text {
+/* Title Text */
+.search-title {
+  color: white;
   font-size: 2rem;
   font-weight: bold;
-  color: white;
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 3px solid white;
-  display: inline-block;
-  width: 0;
-  animation: typing 3s steps(30, end) forwards, blink 1s step-end infinite;
+  margin-bottom: 20px;
 }
 
 /* Search Box */
@@ -137,24 +121,34 @@ button:focus-visible {
   background: white;
   padding: 12px 15px;
   border-radius: 30px;
-  width: 80%;
-  max-width: 600px;
+  width: 100%;
   box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
 }
 
-.close-button {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  background: none;
+/* Search Input */
+.search-input {
   border: none;
-  color: white;
-  font-size: 1.8rem;
-  cursor: pointer;
-  z-index: 1100;
+  outline: none;
+  flex-grow: 1;
+  font-size: 1.2rem;
 }
 
-.close-button:hover {
+/* Search Icon */
+.search-icon {
+  font-size: 1.5rem;
+  color: gray;
+  margin-right: 10px;
+}
+
+/* Close Icon */
+.close-icon {
+  font-size: 1.5rem;
+  color: gray;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.close-icon:hover {
   color: red;
 }
 
