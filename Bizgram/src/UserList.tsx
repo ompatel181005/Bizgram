@@ -89,7 +89,7 @@ const UserList: React.FC = () => {
           </ScrollableContainer>
         </div>
       </div>
-    </SidebarContainer>
+    </div>
   );
 };
 
