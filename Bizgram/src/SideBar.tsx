@@ -11,6 +11,7 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import SearchOverlay from "./SearchOverlay"; // Import the SearchOverlay component
 
 const SidebarButton: React.FC<{
   icon: React.ReactNode;
@@ -37,7 +38,15 @@ const Sidebar: React.FC = () => {
   return (
     <>
       <div className="sidebar d-flex flex-column bg-dark text-white p-3 vh-100 position-fixed">
-        <h1>BizzGram</h1>
+        {/* Clickable Logo */}
+        <h1
+          className="cursor-pointer text-center mb-4"
+          onClick={() => navigate("/")}
+          style={{ cursor: "pointer" }}
+        >
+          BizzGram
+        </h1>
+
         <div className="flex-grow-1"></div>
 
         <SidebarButton
